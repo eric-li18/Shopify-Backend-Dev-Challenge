@@ -5,7 +5,6 @@ class Config(object):
     """Base config"""
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    DEBUG = True
 
 
 class ProductionConfig(Config):
@@ -15,6 +14,7 @@ class ProductionConfig(Config):
 
 class DevelopmentConfig(Config):
     SQLALCHEMY_DATABASE_URI = f"postgresql://postgres:postgres@localhost/inventory"
+    DEBUG = True
 
 
 config = {"dev": DevelopmentConfig, "prod": ProductionConfig}

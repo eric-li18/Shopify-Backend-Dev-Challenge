@@ -1,3 +1,4 @@
-from flask_sqlalchemy import SQLAlchemy
+from .Item import Item
+from .db import db
 
-db = SQLAlchemy()
+__all__ = ["db", "Item"]
