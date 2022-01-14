@@ -11,19 +11,6 @@ def create_item():
     data = request.get_json()
     util.validate_payload(data, "item_schema.json", "itemname", "price")
 
-    """
-    item_exists = (
-        db.session.query(Item)
-        .filter(Item.itemname == data.get("itemname"), Item.price == data.get("price"))
-        .count()
-    )
-    db.session.commit()
-    print(item_exists)
-
-    if item_exists:
-        return util.response({"error": "item exists"}, 400)
-    """
-
     item = Item(**data)
     db.session.add(item)
     db.session.commit()

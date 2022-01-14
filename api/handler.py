@@ -1,4 +1,5 @@
 from api import util
+from typing import Tuple
 
 
 class APIException(Exception):
@@ -17,17 +18,17 @@ class ResourceNotFoundException(APIException):
     description = "Resource not found."
 
 
-def handle_api_exception(e):
+def handle_api_exception(e: APIException) -> Tuple[dict, int, dict]:
     """Handle all raised API exceptions with common response structure. """
     return util.response({"error": f"{e.description} {e.message}"}, e.code)
 
 
-def handle_validation_error(e):
+def handle_validation_error(e: Exception) -> Tuple[dict, int, dict]:
     """Handle specific ValidationError with response structure. """
     return util.response({"error": f"Malformed payload. {e.message}"}, 400)
 
 
-def handle_server_error(e):
+def handle_server_error(e: Exception) -> Tuple[dict, int, dict]:
     """Handle all responses resulting from internal server error
     (status code is 500)."""
     return util.response(
