@@ -1,4 +1,5 @@
-SQLAlchemy>=1.4
+SQLAlchemy==1.4
 flask_sqlalchemy>=2.5
 sqlalchemy_utils
 psycopg2-binary
+jsonschema

@@ -17,10 +17,14 @@ class ResourceNotFoundException(APIException):
     description = "Resource not found."
 
 
-def handle_exception(e):
-    """ Handle all raised exceptions with common response structure. """
-
+def handle_api_exception(e):
+    """Handle all raised API exceptions with common response structure. """
     return util.response({"error": f"{e.description} {e.message}"}, e.code)
+
+
+def handle_validation_error(e):
+    """Handle specific ValidationError with response structure. """
+    return util.response({"error": f"Malformed payload. {e.message}"}, 400)
 
 
 def handle_server_error(e):

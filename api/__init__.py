@@ -5,6 +5,7 @@ from api.config import config
 from api.views import core
 from sqlalchemy_utils import create_database, database_exists
 import api.handler as err
+from jsonschema.exceptions import SchemaError, ValidationError
 
 
 def create_app(test_config=None):
@@ -21,7 +22,6 @@ def create_app(test_config=None):
     if env != "prod":
         db_uri = app.config["SQLALCHEMY_DATABASE_URI"]
         if not database_exists(db_uri):
-            print("Creating database with URI:" + db_uri)
             create_database(db_uri)
 
     from api.models import db
@@ -29,7 +29,9 @@ def create_app(test_config=None):
     db.init_app(app)
     app.register_blueprint(core.bp)
 
-    app.register_error_handler(err.APIException, err.handle_exception)
+    app.register_error_handler(ValidationError, err.handle_validation_error)
+    app.register_error_handler(SchemaError, err.handle_validation_error)
+    app.register_error_handler(err.APIException, err.handle_api_exception)
     app.register_error_handler(500, err.handle_server_error)
 
     return app

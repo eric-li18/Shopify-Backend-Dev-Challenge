@@ -9,7 +9,7 @@ bp = Blueprint("core", __name__)
 @bp.route("/items", methods=["POST"])
 def create_item():
     data = request.get_json()
-    util.validate_payload(data, "itemname", "price")
+    util.validate_payload(data, "item_schema.json", "itemname", "price")
 
     """
     item_exists = (
@@ -33,6 +33,7 @@ def create_item():
 @bp.route("/items/<item_id>", methods=["PATCH"])
 def update_item(item_id):
     data = request.get_json()
+    util.validate_payload(data, filename="item_schema.json")
 
     rows_updated = (
         db.session.query(Item)

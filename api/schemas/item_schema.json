@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Item",
+  "description": "An Item request json",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "The unique identifier for an item",
+      "type": "integer",
+      "minimum": 1
+    },
+    "itemname": {
+      "description": "Name of the item",
+      "type": "string"
+    },
+    "price": {
+      "description": "Price of the item",
+      "type": "number",
+      "minimum": 0
+    },
+    "quantity": {
+      "description": "Quantity of the item",
+      "type": "integer",
+      "minimum": 0
+    },
+    "description": {
+      "description": "Description of the item",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
