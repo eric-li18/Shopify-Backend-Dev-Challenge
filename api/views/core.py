@@ -1,4 +1,3 @@
-from os import stat
 from flask import Blueprint, request
 from api.models import db, Item
 from api import util
@@ -51,14 +50,20 @@ def update_item(item_id):
     if not result:
         raise APIException()
 
-    item = util.object_to_dict(result)
+    item = util.object_to_dict(result.Item)
 
     return util.response(item, 200)
 
 
 @bp.route("/items", methods=["GET"])
 def get_items():
-    pass
+    response = []
+    rows = db.session.query(Item).order_by(Item.id).all()
+
+    for item in rows:
+        response.append(util.object_to_dict(item))
+
+    return util.response(response, 200)
 
 
 @bp.route("/items/<int:item_id>", methods=["DELETE"])

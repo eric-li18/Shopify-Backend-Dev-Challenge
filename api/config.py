@@ -17,4 +17,9 @@ class DevelopmentConfig(Config):
     DEBUG = True
 
 
-config = {"dev": DevelopmentConfig, "prod": ProductionConfig}
+class DockerConfig(Config):
+    SQLALCHEMY_DATABASE_URI = f"postgresql://postgres:postgres@postgres:5432/inventory"
+    DEBUG = True
+
+
+config = {"dev": DevelopmentConfig, "prod": ProductionConfig, "docker": DockerConfig}
