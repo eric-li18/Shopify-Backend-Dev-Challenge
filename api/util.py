@@ -2,7 +2,6 @@ import os
 from flask import json
 from jsonschema import validate
 from typing import Tuple
-import sqlalchemy
 from api.handler import InvalidRequestException
 
 
@@ -18,6 +17,7 @@ def validate_payload(data: dict, filename: str, *args) -> None:
     """
     schema = get_schema(filename)
     validate(data, schema)
+    print(data, filename, args)
 
     if not data:
         raise InvalidRequestException("Missing request payload.")
@@ -37,8 +37,8 @@ def get_schema(filename: str) -> dict:
     return schema
 
 
-def object_to_dict(obj: sqlalchemy.Model) -> dict:
-    """Converts a given sqlalchemy.Model object into a dictionary."""
+def object_to_dict(obj: object) -> dict:
+    """Converts a given object into a dictionary."""
     obj_dict = vars(obj)
     obj_dict.pop("_sa_instance_state", None)
     return obj_dict

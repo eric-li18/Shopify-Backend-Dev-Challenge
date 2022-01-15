@@ -8,7 +8,7 @@ class Item(db.Model):
     itemname = db.Column(db.String(50), nullable=False)
     price = db.Column(db.Float, nullable=False, default=0)
     quantity = db.Column(db.Integer, default=0)
-    description = db.Column(db.String(100))
+    description = db.Column(db.String(100), default="")
 
     def __init__(self, itemname, price, quantity=0, description=None):
         self.itemname = itemname

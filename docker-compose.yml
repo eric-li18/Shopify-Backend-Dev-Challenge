@@ -11,6 +11,8 @@ services:
       - 5432:5432
     networks:
       - backend
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
   backend:
     container_name: api-dev
     build:
@@ -20,9 +22,14 @@ services:
       - 5000:5000
     depends_on:
       - postgres
+    restart: on-failure
     networks:
       - backend
 
 networks:
   backend:
     driver: bridge
+
+volumes:
+  postgres-db:
+    name: postgres-db
