@@ -1,4 +1,5 @@
-from flask import Blueprint, request, send_from_directory
+import csv
+from flask import Blueprint, request, send_file
 from sqlalchemy import func
 from api.models import db, Item
 from api import util
@@ -73,20 +74,17 @@ def delete_item(item_id):
 @bp.route("/items/export", methods=["GET"])
 def export_csv():
     columns = Item.__table__.columns.keys()
-    rows = (
-        db.session.query(Item)
-        .with_entities(
-            func.CONCAT_WS(
-                ",", Item.id, Item.itemname, Item.price, Item.quantity, Item.description
-            )
-        )
-        .order_by(Item.id)
-    )
+    rows = db.session.query(Item).order_by(Item.id)
 
     path = "/app/export.csv"
     with open(path, "w+") as file:
         writer = csv.writer(file)
         writer.writerow(columns)
-        for item in rows:
-            writer.writerow(",".join(item))
-    return send_from_directory("", path)
+
+        for row in rows:
+            writer.writerow(
+                [row.id, row.itemname, row.price, row.quantity, row.description]
+            )
+    return send_file(
+        path, mimetype="text/csv", attachment_filename="export.csv", as_attachment=True
+    )

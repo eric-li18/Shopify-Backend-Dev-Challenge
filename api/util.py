@@ -17,7 +17,6 @@ def validate_payload(data: dict, filename: str, *args) -> None:
     """
     schema = get_schema(filename)
     validate(data, schema)
-    print(data, filename, args)
 
     if not data:
         raise InvalidRequestException("Missing request payload.")
