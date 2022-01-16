@@ -33,17 +33,17 @@ To run the Postman test suite:
 ## API Documentation
 All endpoints here have a base URL of `http://localhost:5000` when running the docker services.
 ### Endpoints
-[Create Item](): `POST /items`
+[Create Item](https://github.com/eric-li18/Shopify-Backend-Dev-Challenge#create-item): `POST /items`
 
-[Update Item](): `PATCH /items/<item_id>`
+[Update Item](https://github.com/eric-li18/Shopify-Backend-Dev-Challenge#update-item): `PATCH /items/<item_id>`
 
-[Get Items](): `GET /items`
+[Get Items](https://github.com/eric-li18/Shopify-Backend-Dev-Challenge#get-items): `GET /items`
 
-[Delete Item](): `DELETE /items/<item_id>`
+[Delete Item](https://github.com/eric-li18/Shopify-Backend-Dev-Challenge#delete-item): `DELETE /items/<item_id>`
 
-[Export Item Table to CSV](): `GET /items/export`
+[Export Item Table to CSV](https://github.com/eric-li18/Shopify-Backend-Dev-Challenge#export-item-table-to-csv): `GET /items/export`
 
----
+
 
 ## Endpoint Documentation
 ### Create Item
