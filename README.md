@@ -33,19 +33,19 @@ To run the Postman test suite:
 ## API Documentation
 All endpoints here have a base URL of `http://localhost:5000` when running the docker services.
 ### Endpoints
-Create Item: `POST /items`
+[Create Item](): `POST /items`
 
-Update Item: `PATCH /items/<item_id>`
+[Update Item](): `PATCH /items/<item_id>`
 
-Get Items: `GET /items`
+[Get Items](): `GET /items`
 
-Delete Item: `DELETE /items/<item_id>`
+[Delete Item](): `DELETE /items/<item_id>`
 
-Export Item Table to CSV: `GET /items/export`
+[Export Item Table to CSV](): `GET /items/export`
 
 ---
-### Endpoint Documentation
-Create Item
+## Endpoint Documentation
+### Create Item
 
 **URL**: `/items`
 
@@ -96,7 +96,7 @@ The price and quantity fields can also be specified. But additional fields will 
 }
 ```
 
-Update Item
+### Update Item
 
 **URL**: `/items/<item_id>`
 
@@ -134,7 +134,7 @@ The quantity, price, description or itemname are changeable. Additional fields w
 ```
 
 
-Get Items
+### Get Items
 
 **URL**: `/items`
 
@@ -172,7 +172,7 @@ All items from the Item table are returned as a response.
 ]
 ```
 
-Delete Item
+### Delete Item
 
 **URL**: `/items/<item_id>`
 
@@ -194,7 +194,7 @@ Delete Item
 }
 ```
 
-Export Item Table to CSV
+### Export Item Table to CSV
 
 **URL**: `/items/export`
 
