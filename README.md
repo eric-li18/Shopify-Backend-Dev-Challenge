@@ -44,8 +44,10 @@ All endpoints here have a base URL of `http://localhost:5000` when running the d
 [Export Item Table to CSV](): `GET /items/export`
 
 ---
+
 ## Endpoint Documentation
 ### Create Item
+---
 
 **URL**: `/items`
 
@@ -97,6 +99,7 @@ The price and quantity fields can also be specified. But additional fields will 
 ```
 
 ### Update Item
+---
 
 **URL**: `/items/<item_id>`
 
@@ -135,6 +138,7 @@ The quantity, price, description or itemname are changeable. Additional fields w
 
 
 ### Get Items
+---
 
 **URL**: `/items`
 
@@ -173,6 +177,7 @@ All items from the Item table are returned as a response.
 ```
 
 ### Delete Item
+---
 
 **URL**: `/items/<item_id>`
 
@@ -195,6 +200,7 @@ All items from the Item table are returned as a response.
 ```
 
 ### Export Item Table to CSV
+---
 
 **URL**: `/items/export`
 
