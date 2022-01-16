@@ -19,7 +19,7 @@ def create_item():
     return util.response({"message": "Item successfully created"}, 201)
 
 
-@bp.route("/items/<item_id>", methods=["PATCH"])
+@bp.route("/items/<int:item_id>", methods=["PATCH"])
 def update_item(item_id):
     data = request.get_json()
     util.validate_payload(data, filename="item_schema.json")

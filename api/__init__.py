@@ -35,7 +35,6 @@ def create_app(test_config=None):
     app.register_error_handler(500, err.handle_server_error)
 
     app.app_context().push()
-    db.drop_all()
     db.create_all()
 
     return app
